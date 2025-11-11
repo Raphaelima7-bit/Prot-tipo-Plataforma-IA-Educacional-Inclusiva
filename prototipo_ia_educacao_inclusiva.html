@@ -1,0 +1,237 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Protótipo: IA Educacional Inclusiva</title>
+  <style>
+    body{font-family:Inter, "Segoe UI", Arial; margin:0; padding:0; color:#222;}
+    header{background:#004578;color:#fff;padding:18px 24px;}
+    .container{padding:20px; max-width:980px;margin:18px auto;}
+    .card{background:#fff;border-radius:8px;padding:16px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+    h1,h2{margin:6px 0;}
+    .row{display:flex;gap:12px;flex-wrap:wrap;}
+    .col{flex:1;min-width:240px;}
+    label{display:block;font-weight:600;margin-bottom:6px;}
+    input[type=text], select, textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;}
+    button{background:#0078D4;color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;}
+    small{color:#555;}
+    .ui-preview{background:#f7fbff;padding:12px;border-radius:6px;border:1px dashed #cfe6ff;}
+    .log{background:#111;color:#0f0;padding:10px;border-radius:6px;font-family:monospace;font-size:13px;height:120px;overflow:auto;}
+    footer{padding:12px;text-align:center;color:#666;font-size:13px;}
+    .chip{display:inline-block;background:#eef6ff;padding:6px 10px;border-radius:999px;margin-right:6px;font-weight:600;color:#005a9e;}
+    nav a{color:#fff;text-decoration:none;margin-right:10px;}
+    .concept-map{width:100%;height:260px;background:white;border-radius:6px;padding:12px;border:1px solid #eee;overflow:auto;}
+    .badge{display:inline-block;padding:6px 10px;background:#e6f4ea;color:#006644;border-radius:6px;margin-right:6px;font-weight:700;}
+    .explain{background:#fff7e6;border-left:4px solid #ffb020;padding:10px;border-radius:6px;}
+    .muted{color:#666;font-size:13px;}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav><a href="#home">Início</a> | <a href="#prototype">Protótipo</a> | <a href="#concept">Mapa Conceitual</a> | <a href="#analysis">Análise</a></nav>
+    <h1>Protótipo: Plataforma IA Educacional Inclusiva</h1>
+    <p class="muted">Protótipo interativo demonstrando personalização sociocultural, acessibilidade e mitigação de riscos.</p>
+  </div>
+</header>
+
+<div class="container" id="home">
+  <div class="card">
+    <h2>Visão rápida</h2>
+    <p>Protótipo funcional (simulado) de uma plataforma de ensino de idiomas com IA que adapta conteúdos à realidade sociocultural do usuário, prioriza inclusão, privacidade e baixas exigências de infraestrutura.</p>
+    <div style="margin-top:8px;">
+      <span class="chip">Acessível</span><span class="chip">Offline-first</span><span class="chip">Explicável</span>
+    </div>
+  </div>
+
+  <div class="card" id="prototype">
+    <h2>Cadastro e Perfil Sociocultural</h2>
+    <div class="row">
+      <div class="col">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" placeholder="Ex.: Maria"/>
+      </div>
+      <div class="col">
+        <label for="idade">Idade</label>
+        <input id="idade" type="text" placeholder="Ex.: 34"/>
+      </div>
+    </div>
+    <div style="margin-top:12px;" class="row">
+      <div class="col">
+        <label for="local">Localidade (cidade / região)</label>
+        <input id="local" type="text" placeholder="Ex.: Recife - PE"/>
+      </div>
+      <div class="col">
+        <label for="dialeto">Variante linguística / sotaque</label>
+        <select id="dialeto">
+          <option value="padrao">Português padrão</option>
+          <option value="nordeste">Nordestino</option>
+          <option value="amazonia">Amazônico</option>
+          <option value="afro">Influência afro-brasileira</option>
+          <option value="imigrante">Língua de imigrante</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <label for="contexto">Contexto sociocultural / objetivos</label>
+      <textarea id="contexto" rows="3" placeholder="Ex.: Preciso aprender inglês para trabalhar em turismo local; tenho pouco tempo disponível; tenho celular básico"></textarea>
+    </div>
+
+    <div style="margin-top:12px;">
+      <button onclick="startProfile()">Salvar perfil e simular plano</button>
+      <small style="display:block;margin-top:6px;">O simulador personaliza o plano com base em informações socioculturais.</small>
+    </div>
+
+    <div style="margin-top:12px;" class="ui-preview">
+      <strong>Plano gerado (simulação):</strong>
+      <div id="planArea" style="margin-top:8px;">Nenhum perfil salvo ainda.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Aula adaptativa (simulada)</h2>
+    <div class="grid">
+      <div>
+        <label for="exercicio">Exercício de Pronúncia</label>
+        <div style="margin-top:6px;">
+          <button onclick="simulateRecording()">Gravar frase (simulação)</button>
+          <div style="margin-top:8px;" id="recResult" class="muted">Nenhum áudio fornecido — simulador mostra possíveis problemas de reconhecimento com sotaques.</div>
+        </div>
+      </div>
+      <div>
+        <label for="reading">Exercício de Leitura</label>
+        <div style="margin-top:6px;">
+          <button onclick="getReading()">Gerar leitura culturalmente relevante</button>
+          <div id="readingArea" style="margin-top:8px;" class="muted">Sem leitura gerada.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;">
+      <h3>Feedback explicável</h3>
+      <div class="explain" id="explain">Ao final de cada exercício, o sistema explica por que sugeriu aquele recurso e que dados foram usados para chegar lá.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Configurações de Privacidade & Acessibilidade</h2>
+    <div class="row">
+      <div class="col">
+        <label>Modo Offline</label>
+        <select id="offline">
+          <option value="on">Ativado (sincronização mínima)</option>
+          <option value="off">Desativado</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Consentimento de uso de dados</label>
+        <select id="consent">
+          <option value="agree">Concordo (uso para melhorar o plano)</option>
+          <option value="minimal">Uso mínimo (anôn. / local)</option>
+          <option value="deny">Negar (apenas local, sem envio)</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-top:12px;">
+      <button onclick="showSettings()">Aplicar configurações</button>
+      <div style="margin-top:8px;" id="settingsLog" class="muted">Nenhuma mudança aplicada.</div>
+    </div>
+  </div>
+
+  <div class="card" id="concept">
+    <h2>Mapa Conceitual (integração técnica e pedagógica)</h2>
+    <div class="concept-map" id="map">
+      <svg width="920" height="220" viewBox="0 0 920 220" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker></defs>
+        <rect x="12" y="18" width="180" height="40" rx="8" fill="#e8f3ff" stroke="#cfe6ff"/>
+        <text x="20" y="43" font-size="12" fill="#004578">Entrada do usuário</text>
+        <rect x="220" y="10" width="200" height="60" rx="8" fill="#fff7e6" stroke="#ffecb8"/>
+        <text x="230" y="30" font-size="12" fill="#8a5a00">Perfil sociocultural</text>
+        <rect x="460" y="10" width="220" height="60" rx="8" fill="#e8fff0" stroke="#d8f6df"/>
+        <text x="470" y="30" font-size="12" fill="#0b6a3d">Engine de Personalização</text>
+        <rect x="700" y="10" width="180" height="60" rx="8" fill="#fff0f6" stroke="#ffdbe9"/>
+        <text x="710" y="30" font-size="12" fill="#7a1554">Conteúdo adaptado</text>
+
+        <line x1="192" y1="38" x2="220" y2="38" stroke="#777" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="420" y1="38" x2="460" y2="38" stroke="#777" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="680" y1="38" x2="700" y2="38" stroke="#777" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <rect x="12" y="100" width="260" height="40" rx="8" fill="#fff" stroke="#eee"/>
+        <text x="20" y="125" font-size="11" fill="#333">Dados locais (offline) & anonimização</text>
+
+        <rect x="290" y="100" width="220" height="40" rx="8" fill="#fff" stroke="#eee"/>
+        <text x="300" y="125" font-size="11" fill="#333">Auditoria de viés e logs</text>
+
+        <rect x="580" y="100" width="300" height="40" rx="8" fill="#fff" stroke="#eee"/>
+        <text x="590" y="125" font-size="11" fill="#333">Mediação humana / professores</text>
+
+      </svg>
+    </div>
+    <small class="muted">O mapa ilustra o fluxo: entrada sociocultural → engine de personalização → conteúdo adaptado, com salvaguardas para privacidade e auditoria.</small>
+  </div>
+
+  <div class="card" id="analysis">
+    <h2>Análise crítica da implementação</h2>
+    <p>O protótipo demonstra mecanismos práticos para mitigar vieses, proteger dados e priorizar inclusão (offline-first, dados locais e consentimento). Entretanto, a implementação real precisa considerar o custo de curadoria de dados representativos, avaliação contínua por auditores independentes e formação de mediadores locais. Riscos remanescentes: dependência de financiamento, manutenção de infraestrutura local e desafios para auditar modelos proprietários.</p>
+    <p class="muted">Role a caixa de log abaixo para ver mensagens simuladas do motor de personalização.</p>
+    <div class="log" id="log">INÍCIO DO LOG: sistema pronto.</div>
+  </div>
+
+</div>
+
+<footer>
+  Protótipo gerado para demonstração — não é um sistema funcional completo. Para transformar em app PowerApps/React/Flutter é necessário desenvolvimento adicional e integração com serviços de IA e backend.
+</footer>
+
+<script>
+function startProfile(){
+  const nome = document.getElementById('nome').value || 'Usuário';
+  const local = document.getElementById('local').value || 'região não informada';
+  const dial = document.getElementById('dialeto').value;
+  const contexto = document.getElementById('contexto').value || 'objetivos não informados';
+
+  const plan = `Plano: 3x/semana, 20 min/dia. Foco em vocabulário de ${contexto}. Ajustes: adaptar pronúncia considerando variante "${dial}". Material culturalmente relevante baseado em ${local}. Modo offline ativado por padrão.`;
+  document.getElementById('planArea').innerText = plan;
+  log('Perfil salvo — plano personalizado gerado.');
+}
+
+function simulateRecording(){
+  const dial = document.getElementById('dialeto').value;
+  const rec = document.getElementById('recResult');
+  if(dial === 'nordeste' || dial === 'amazonia' || dial === 'afro'){
+    rec.innerText = 'Reconhecimento de fala: atenção — modelo detectou variante regional. Sistema sugere treino adaptado e opção de ajuste de acento.';
+    log('Reconhecimento de fala: baixa confiança detectada para variante regional — enviar amostra para curadoria.');
+  } else {
+    rec.innerText = 'Reconhecimento de fala: boa correspondência. Feedback: trabalho correto na pronúncia.';
+    log('Reconhecimento de fala: confiança alta.');
+  }
+}
+
+function getReading(){
+  const local = document.getElementById('local').value || 'sua localidade';
+  const reading = `Leitura sugerida: um diálogo sobre atividades locais em ${local}, usando vocabulário relevante ao seu contexto.`;
+  document.getElementById('readingArea').innerText = reading;
+  log('Leitura gerada com contexto sociocultural.');
+}
+
+function showSettings(){
+  const off = document.getElementById('offline').value;
+  const consent = document.getElementById('consent').value;
+  document.getElementById('settingsLog').innerText = `Configurações aplicadas — Modo offline: ${off}; Consentimento: ${consent}`;
+  log('Configurações de privacidade atualizadas pelo usuário.');
+}
+
+function log(msg){
+  const l = document.getElementById('log');
+  const now = new Date().toLocaleTimeString();
+  l.innerText = now + ' - ' + msg + '\n' + l.innerText;
+}
+</script>
+</body>
+</html>
